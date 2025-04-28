@@ -17,7 +17,7 @@
     <body>
         <nav class="topnav" id="myTopnav">
             <div class="header-logo">
-                <img alt="logo" src="Logo.png" />
+                <img id="logo" alt="logo" src="Logo.png" />
                 <a class="icon">
                     <i class="fa fa-bars"></i>
                 </a>
@@ -44,8 +44,8 @@
             <div class="hero-section">
                 <div class="hero-content">
                     <h1 class="hero-headline">
-                        Marathon national<br />
-                        de jeux vidéos
+                        Marathon national
+                        <span class="title-separation">de jeux vidéos</span>
                     </h1>
                     <p class="hero-text">
                         Vous aimez jouer ? Notre prochain évènement gaming est
@@ -56,20 +56,14 @@
                 <div class="hero-img">
                     <img src="./bg_img.jpg" alt="img" />
                 </div>
-                <button class="btn-signup modal-btn">je m'inscris</button>
             </div>
             <div class="bground">
                 <div class="content">
-                    <span class="close"></span>
+                    <span class="modal-btn close"></span>
                     <div class="modal-body">
-                        <form
-                            name="reserve"
-                            action="index.html"
-                            method="get"
-                            onsubmit="return validate();"
-                        >
-                            <div class="formData">
-                                <label>Prénom</label>
+                        <form name="reserve" action="index.html" method="get" id="sign-in">
+                            <div>
+                                <label for="first">Prénom</label>
                                 <input
                                     class="text-control"
                                     type="text"
@@ -78,8 +72,8 @@
                                     minlength="2"
                                 />
                             </div>
-                            <div class="formData">
-                                <label>Nom</label>
+                            <div>
+                                <label for="last">Nom</label>
                                 <input
                                     class="text-control"
                                     type="text"
@@ -87,8 +81,8 @@
                                     name="last"
                                 />
                             </div>
-                            <div class="formData">
-                                <label>E-mail</label>
+                            <div>
+                                <label for="email">E-mail</label>
                                 <input
                                     class="text-control"
                                     type="email"
@@ -96,8 +90,8 @@
                                     name="email"
                                 />
                             </div>
-                            <div class="formData">
-                                <label>Date de naissance</label>
+                            <div>
+                                <label for="birthdate">Date de naissance</label>
                                 <input
                                     class="text-control"
                                     type="date"
@@ -105,11 +99,11 @@
                                     name="birthdate"
                                 />
                             </div>
-                            <div class="formData">
-                                <label
-                                    >À combien de tournois GameOn avez-vous déjà
-                                    participé ?</label
-                                >
+                            <div>
+                                <label for="quantity">
+                                    À combien de tournois GameOn avez-vous déjà
+                                    participé ?
+                                </label>
                                 <input
                                     type="number"
                                     class="text-control"
@@ -119,12 +113,13 @@
                                     max="99"
                                 />
                             </div>
-                            <p class="text-label">
-                                A quel tournoi souhaitez-vous participer cette
-                                année ?
-                            </p>
-                            <div class="formData">
+                            <div>
+                                <p class="text-label">
+                                    A quel tournoi souhaitez-vous participer cette
+                                    année ?
+                                </p>
                                 <input
+                                    checked
                                     class="checkbox-input"
                                     type="radio"
                                     id="location1"
@@ -192,7 +187,7 @@
                                 >
                             </div>
 
-                            <div class="formData">
+                            <div>
                                 <input
                                     class="checkbox-input"
                                     type="checkbox"
