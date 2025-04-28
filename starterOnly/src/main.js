@@ -1,7 +1,6 @@
+import onToggleNavbar from './modules/navbar.js';
 
-
-const navBar = document.getElementById("myTopnav");
-navBar.addEventListener("click", () => navBar.classList.toggle("responsive"));
+onToggleNavbar();
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
