@@ -17,17 +17,16 @@
     <body>
         <nav class="topnav" id="myTopnav">
             <div class="header-logo">
-                <img id="logo" alt="logo" src="Logo.png" />
+                <a href="./index.html">
+                    <img id="logo" alt="logo" src="Logo.png" />
+                </a>
                 <a class="icon">
                     <i class="fa fa-bars"></i>
                 </a>
             </div>
             <ul class="main-navbar">
                 <li class="nav-link">
-                    <a href="#" class="active"><span>Accueil</span></a>
-                </li>
-                <li class="nav-link">
-                    <a href="#"><span>Détails de l'évènement</span></a>
+                    <a href="#" class="active"><span>Détails de l'évènement</span></a>
                 </li>
                 <li class="nav-link">
                     <a href="#"><span>À propos</span></a>
@@ -88,6 +87,7 @@
                                     type="email"
                                     id="email"
                                     name="email"
+                                    inputmode="email"
                                 />
                             </div>
                             <div>
@@ -110,7 +110,7 @@
                                     id="quantity"
                                     name="quantity"
                                     min="0"
-                                    max="99"
+                                    inputmode="numeric"
                                 />
                             </div>
                             <div>
@@ -119,7 +119,6 @@
                                     année ?
                                 </p>
                                 <input
-                                    checked
                                     class="checkbox-input"
                                     type="radio"
                                     id="location1"

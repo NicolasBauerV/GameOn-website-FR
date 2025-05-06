@@ -1,47 +1,45 @@
-import onToggleNavbar from "./modules/navbar.js";
-import OpenCloseModal from "./modules/modal.js";
+import onToggleNavbar from "./components/navbar.js";
+import openCloseModal from "./components/modal.js";
+import validateTextInput from "./modules/validateInputsText.js";
+import validateEmailField from "./modules/validateEmailField.js";
+import validateDateField from "./modules/validateDateField.js";
+import validateRadioInputs from "./modules/validateRadioInputs.js";
+import validateCheckox from "./modules/validateCheckbox.js";
 
 onToggleNavbar();
-OpenCloseModal();
+openCloseModal();
 
 // DOM Elements
 const form = document.querySelector("form");
-
-const formData = new FormData(form);
-
 const inputsText = document.querySelectorAll(`input[type="text"]`);
+const dateInput = document.querySelector("#birthdate");
+const emailField = document.querySelector("#email");
+const quantityField = document.querySelector("#quantity");
+const radioInputs = document.querySelectorAll(`input[name="location"]`);
+const checkbox = document.querySelector(`#checkbox1`);
 
-/**
- * Give an error message to user if the field is not correct
- * 
- * @param {string} message Message to user
- * @param {Element} input The input to call his parent container
- */
-function giveErrorMessage(message, input) {
-    const textIndication = document.createElement("span");
-    input.parentElement.classList.toggle("error");
-    textIndication.classList = "info-error";
-    textIndication.innerHTML = message;
-    input.parentElement.appendChild(textIndication);
-}
+// Interdire les dates ultérieures à aujourd'hui
+const today = new Date().toISOString().split("T")[0];
+dateInput.setAttribute("max", today);
+dateInput.value = today; // On insère la date à aujourd'hui
 
-inputsText.forEach(inputElement => {
-    inputElement.addEventListener("change", () => {
-        // add listener to field texts
+inputsText.forEach((input) => {
+    input.addEventListener("input", () => validateTextInput(input));
+});
+dateInput.addEventListener("change", () => validateDateField(dateInput, today));
+emailField.addEventListener("input", () => validateEmailField(emailField));
+quantityField.addEventListener("input", () =>
+    validateQuantityField(quantityField)
+);
+radioInputs.forEach((input) => {
+    input.addEventListener("change", () => {
+        validateRadioInputs(input);
     });
 });
 
+checkbox.addEventListener("click", () => validateCheckox(checkbox));
+
+// When all inputs are valid
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (inputsText[0].value.length < 2) {
-        giveErrorMessage("2 caractères au minimum", inputsText[0]);
-    }
-    inputsText.forEach((input) => {
-        console.log(input);
-        if (input.value !== "" && input.value.match(/^[\p{L}\s]+$/u) !== null) {
-            input.parentElement.classList.toggle("success");
-        } else {
-            giveErrorMessage("Veuillez remplir ce champ sans chiffres ni caractères spéciaux (é, &, @, etc...)", input);
-        }
-    });
 });

@@ -1,7 +1,7 @@
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalbg = document.querySelector(".bground");
 
-export default function OpenCloseModal() {
+export default function openCloseModal() {
     const [openModalBtn, closeModalBtn] = modalBtn;
 
     openModalBtn.addEventListener("click", () => {
