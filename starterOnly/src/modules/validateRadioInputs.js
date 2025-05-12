@@ -1,21 +1,22 @@
 import giveErrorMessage from "../utils/giveErrorMessage.js";
 /**
  * Checks if a radio button is checked
- * @param {Element} input 
+ * @param {NodeListOf<Element>} radioButtons 
  * @returns 
  */
-export default function validateRadioInputs(input) {
+export default function validateRadioInputs(radioButtons) {
     let isChecked = false;
-    const parent = input.parentElement;
+    const parent = radioButtons[0].parentElement;
     parent.querySelectorAll(".info-error").forEach((el) => el.remove());
-    if (!input.checked) {
-        input.classList.remove("success");
-        input.classList.add("error");
-        giveErrorMessage("Vous devez saisir uniquement des chiffres", parent);
+    const inputChecked = document.querySelector(`input[name="location"]:checked`) !== null;
+    if (!inputChecked) {
+        radioButtons[0].classList.remove("success");
+        radioButtons[0].classList.add("error");
+        giveErrorMessage("Vous devez selectionner une option", parent);
         return isChecked;
     } else {
-        input.classList.remove("error");
-        input.classList.add("success");
+        radioButtons[0].classList.remove("error");
+        radioButtons[0].classList.add("success");
         isChecked = true;
         return isChecked;
     }
